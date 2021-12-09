@@ -2,7 +2,7 @@ FROM node:16 as base
 
 WORKDIR /app
 
-COPY package* .
+COPY package* ./
 
 RUN npm ci
 
@@ -17,4 +17,6 @@ RUN npm run build
 
 FROM nginx:1.21.4 as prod
 
-COPY --from=base /app/public /usr/share/nginx/html
+WORKDIR /usr/share/nginx/html
+
+COPY --from=build /app/public/ ./
