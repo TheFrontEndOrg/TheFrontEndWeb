@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - 8081:80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.thefrontend.rule=Host(`thefrontend.io`)"
+      - "traefik.http.routers.thefrontend.tls=true"
+      - "traefik.http.routers.thefrontend.tls.certresolver=thefrontend"
+      - "traefik.http.routers.thefrontend.entrypoints=HTTPS"
+      - "traefik.http.services.thefrontend.loadbalancer.server.port=80"
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
