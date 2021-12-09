@@ -1,5 +1,5 @@
 <main>
-	<h1>Wellcome to TheFrontEnd</h1>
+	<h1>Welcome to TheFrontEnd</h1>
 	<p>Find us in <a href="https://t.me/thefrontend">Telegram</a>.</p>
 </main>
 
