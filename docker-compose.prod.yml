@@ -4,8 +4,6 @@ services:
   web:
     build: .
     restart: unless-stopped
-    ports:
-      - 8081:80
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.thefrontend.rule=Host(`thefrontend.io`)"
